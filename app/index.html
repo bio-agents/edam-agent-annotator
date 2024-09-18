@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" ng-app="mydemo">
+<head>
+    <meta charset="utf-8">
+    <title>EDAM Agent Annotator DEMO</title>
+
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angucomplete-alt/angucomplete-alt.css">
+    <link rel="stylesheet" href="app.css" />
+
+    <script src="jsonpath-0.8.0.js"></script>
+    <script src="eta-objects.js"></script>
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/angucomplete-alt/angucomplete-alt.js"></script>
+    <script src="bower_components/angular-tree-control/angular-tree-control.js"></script>
+    <script src="bower_components/fuse.js/src/fuse.min.js"></script>
+    <script src="app.module.js"></script>
+    <script src="edam-agent-annotator.module.js"></script>
+    <script src="fuse.service.js"></script>
+    <script src="etacore.service.js"></script>
+    <script src="eta-term-collection.directive.js"></script>
+    <script src="eta-term.directive.js"></script>
+    <script src="eta-function.directive.js"></script>
+
+    <link rel="stylesheet" href="bower_components/angular-tree-control/css/tree-control.css" />
+    <link rel="stylesheet" href="bower_components/angular-tree-control/css/tree-control-attribute.css" />
+
+
+</head>
+<body>
+     <div class="container" ng-init='f={"function":[{"operation":[""]}],"topic":[{}]}'>
+        <h1>EDAM Agent Annotator DEMO</h1>
+        <div class="panel panel-primary">
+            <div class="panel-heading eta-text-xl clearfix">
+                <strong>Topic *</strong>
+                <button class="btn btn-default btn-xs highlight-icon pull-right" type="button" ng-click="">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <eta-term-collection tree-type="topic" added-terms-list="f.topic" color-class="info" autocomplete-id="topic-id"></eta-term-collection>
+            </div>
+        </div>
+        <hr>
+        <eta-function functions = "f"></eta-function>
+        <hr>
+        <pre>{{f | json}}
+        </pre>
+    </div>
+
+    <hr>
+</body>
+</html>
